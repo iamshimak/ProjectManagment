@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1409F38E228CF37E008951B2 /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409F38D228CF37E008951B2 /* TaskFormViewController.swift */; };
 		1496D6DC228CAC5500F45338 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */; };
 		1496D6DE228CACB800F45338 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DD228CACB800F45338 /* Project.swift */; };
 		1496D6E0228CAF6C00F45338 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1409F38D228CF37E008951B2 /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
 		1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		1496D6DD228CACB800F45338 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */,
 				3F6004B9228C0F0F007DFB8E /* DetailViewController.swift */,
 				1496D6E4228CC01800F45338 /* ProjectFormViewController.swift */,
+				1409F38D228CF37E008951B2 /* TaskFormViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,7 +187,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = sk;
 				TargetAttributes = {
 					3F60049E228C0559007DFB8E = {
@@ -259,6 +262,7 @@
 				1496D6E3228CB16000F45338 /* ProjectTableViewCell.swift in Sources */,
 				1496D6EB228CDE0400F45338 /* SlideInPresentationAnimator.swift in Sources */,
 				1496D6DC228CAC5500F45338 /* ProjectTableViewController.swift in Sources */,
+				1409F38E228CF37E008951B2 /* TaskFormViewController.swift in Sources */,
 				3F6004A3228C055A007DFB8E /* AppDelegate.swift in Sources */,
 				1496D6E0228CAF6C00F45338 /* ProjectDetailViewController.swift in Sources */,
 				1496D6DE228CACB800F45338 /* Project.swift in Sources */,
@@ -303,6 +307,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -310,6 +315,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -360,6 +366,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -367,6 +374,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

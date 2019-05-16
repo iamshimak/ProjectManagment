@@ -77,7 +77,7 @@ class SlideInPresentationController: UIPresentationController {
 
         switch direction {
         case .right:
-            frame.origin.x = containerView!.frame.width * (1.0/3.0)
+            frame.origin.x = containerView!.frame.width * (2.0/4.0)
         case .bottom:
             frame.origin.y = containerView!.frame.height * (1.0/3.0)
         default:

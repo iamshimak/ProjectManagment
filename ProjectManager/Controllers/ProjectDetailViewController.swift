@@ -16,6 +16,8 @@ class ProjectDetailViewController: UIViewController {
         }
     }
     
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
+    
     func refreshUI() {
         loadViewIfNeeded()
         // nameLabel.text = monster?.name
@@ -28,6 +30,16 @@ class ProjectDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? TaskFormViewController {
+            slideInTransitioningDelegate.direction = .right
+            slideInTransitioningDelegate.disableCompactHeight = false
+            
+            controller.transitioningDelegate = slideInTransitioningDelegate
+            controller.modalPresentationStyle = .custom
+        }
     }
     
 

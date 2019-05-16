@@ -70,14 +70,6 @@ class ProjectTableViewController: UITableViewController {
         }
     }
     
-    func projectForm(sender: Any) {
-        let controller = ProjectDetailViewController()
-        slideInTransitioningDelegate.direction = .left
-        // controller.delegate = self
-        controller.transitioningDelegate = slideInTransitioningDelegate
-        controller.modalPresentationStyle = .custom
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ProjectFormViewController {
             slideInTransitioningDelegate.direction = .left
