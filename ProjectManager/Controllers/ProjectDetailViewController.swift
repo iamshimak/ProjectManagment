@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import EventKit
+import EventKitUI
 
 class ProjectDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var project: Project? {
+    var project: Project! {
         didSet {
             refreshUI()
         }
     }
     
+    var dataController: DataController!
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     
     func refreshUI() {
@@ -39,26 +42,55 @@ class ProjectDetailViewController: UIViewController {
             slideInTransitioningDelegate.direction = .right
             slideInTransitioningDelegate.disableCompactHeight = false
             
+            controller.dataController = dataController
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addToCalender(_ sender: Any) {
+        let eventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: EKEntityType.event, completion:{ granted, error in
+            DispatchQueue.main.async {
+                // Present Calender in Main Thread
+                if granted && error == nil {
+                    let event = EKEvent(eventStore: eventStore)
+                    event.title = self.project.name
+                    event.endDate = self.project.dueDate
+                    event.notes = self.project.notes
+                    event.calendar = eventStore.defaultCalendarForNewEvents
+                    
+                    let eventController = EKEventEditViewController()
+                    eventController.event = event
+                    eventController.eventStore = eventStore
+                    eventController.editViewDelegate = self
+                    self.present(eventController, animated: true, completion: nil)
+                }
+            }
+        })
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension ProjectDetailViewController: ProjectSelectionDelegate {
     func projectSelected(_ newProject: Project) {
         project = newProject
+    }
+}
+
+extension ProjectDetailViewController: EKEventEditViewDelegate {
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         masterViewController.delegate = detailViewController
         masterViewController.dataController = dataController
         
+        detailViewController.dataController = dataController
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         

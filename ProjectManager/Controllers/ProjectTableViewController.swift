@@ -48,19 +48,11 @@ class ProjectTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /// Adds a new notebook to the end of the `notebooks` array
-    func addProject(name: String) {
-        //let notebook = Notebook(context: dataController.viewContext)
-        //notebook.name = name
-        //notebook.creationDate = Date()
-        //try? dataController.viewContext.save()
-    }
-    
     /// Deletes the notebook at the specified index path
     func deleteProject(at indexPath: IndexPath) {
-        //let notebookToDelete = fetchedResultsController.object(at: indexPath)
-        //dataController.viewContext.delete(notebookToDelete)
-        //try? dataController.viewContext.save()
+        let project = fetchedResultsController.object(at: indexPath)
+        dataController.viewContext.delete(project)
+        try? dataController.viewContext.save()
     }
     
     // MARK: - Table view data source
@@ -73,15 +65,14 @@ class ProjectTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let project = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: ProjectTableViewCell.defaultReuseIdentifier, for: indexPath) as! ProjectTableViewCell
-        
-        // Configure cell
-        // cell.nameLabel.text = aNotebook.name
+        cell.setupCell(project)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // delegate?.projectSelected(selectedMonster)
+        let project = fetchedResultsController.object(at: indexPath)
+        delegate?.projectSelected(project)
         if let detailViewController = delegate as? DetailViewController,
             let detailNavigationController = detailViewController.navigationController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)

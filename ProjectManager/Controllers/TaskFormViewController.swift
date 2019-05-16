@@ -10,13 +10,38 @@ import UIKit
 
 class TaskFormViewController: UIViewController {
 
+    @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var notesTextField: UILabel!
+    @IBOutlet weak var dueDatePicker: UIDatePicker!
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    var dataController: DataController!
+    var isEdit = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func save(_ sender: Any) {
+        if validate() {
+            let task = Task(context: dataController.viewContext)
+            task.name = taskTextField.text
+            task.notes = notesTextField.text
+            task.dueDate = dueDatePicker.date
+            task.taskReminder = notificationSwitch.isOn
+            
+            try? dataController.viewContext.save()
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func validate() -> Bool {
+        let textValidation = taskTextField.text != nil && taskTextField.text!.count > 0
+        let dateValidation = dueDatePicker.date.isGreaterThanDate(Date())
+        return textValidation && dateValidation
+    }
+    
     /*
     // MARK: - Navigation
 

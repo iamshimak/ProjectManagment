@@ -93,12 +93,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		1407327F228E096B000A146E /* extensions */ = {
+		1407327F228E096B000A146E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				14073280228E098C000A146E /* Date+Extension.swift */,
 			);
-			path = extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1496D6D9228CAACF00F45338 /* Controllers */ = {
@@ -172,7 +172,7 @@
 				1496D6D9228CAACF00F45338 /* Controllers */,
 				1496D6DA228CAAE100F45338 /* Models */,
 				1496D6E1228CB13900F45338 /* Views */,
-				1407327F228E096B000A146E /* extensions */,
+				1407327F228E096B000A146E /* Extensions */,
 				3F6004A6228C055A007DFB8E /* Main.storyboard */,
 				3F6004AC228C055A007DFB8E /* Assets.xcassets */,
 				3F6004AE228C055A007DFB8E /* LaunchScreen.storyboard */,

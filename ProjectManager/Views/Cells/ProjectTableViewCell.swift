@@ -16,6 +16,11 @@ class ProjectTableViewCell: UITableViewCell, Cell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func setupCell(_ project: Project) {
+        nameLabel.text = project.name
+        dateLabel.text = project.dueDate?.formatDate()
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

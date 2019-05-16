@@ -64,4 +64,10 @@ extension Date {
         //Return Result
         return dateWithHoursAdded
     }
+    
+    func formatDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
 }
