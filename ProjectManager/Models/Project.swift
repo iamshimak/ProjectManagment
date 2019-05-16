@@ -18,6 +18,7 @@ class Project {
     let priority: Priority
     let dueDate: Date
     let notes: String
+    let completed: Double = 0
     
     init(name: String, priority: Priority, dueDate: Date, notes: String) {
         self.name = name

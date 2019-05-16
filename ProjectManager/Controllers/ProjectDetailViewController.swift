@@ -9,7 +9,9 @@
 import UIKit
 
 class ProjectDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     var project: Project? {
         didSet {
             refreshUI()
