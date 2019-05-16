@@ -15,16 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         guard let splitViewController = window?.rootViewController as? UISplitViewController,
             let leftNavController = splitViewController.viewControllers.first as? UINavigationController,
-            let masterViewController = leftNavController.topViewController as? MasterViewController,
+            let masterViewController = leftNavController.topViewController as? ProjectTableViewController,
             let rightNavController = splitViewController.viewControllers.last as? UINavigationController,
-            let detailViewController = rightNavController.topViewController as? DetailViewController
+            let detailViewController = rightNavController.topViewController as? ProjectDetailViewController
             else { fatalError() }
         
-        let firstMonster = masterViewController.monsters.first
-        detailViewController.monster = firstMonster
+        // let firstMonster = masterViewController.monsters.first
+        // detailViewController.monster = firstMonster
         masterViewController.delegate = detailViewController
         
         detailViewController.navigationItem.leftItemsSupplementBackButton = true

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1496D6DC228CAC5500F45338 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */; };
+		1496D6DE228CACB800F45338 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DD228CACB800F45338 /* Project.swift */; };
+		1496D6E0228CAF6C00F45338 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */; };
+		1496D6E3228CB16000F45338 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E2228CB16000F45338 /* ProjectTableViewCell.swift */; };
+		1496D6E5228CC01800F45338 /* ProjectFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E4228CC01800F45338 /* ProjectFormViewController.swift */; };
+		1496D6E7228CC27F00F45338 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E6228CC27F00F45338 /* SlideInPresentationManager.swift */; };
+		1496D6E9228CC5B300F45338 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E8228CC5B300F45338 /* SlideInPresentationController.swift */; };
+		1496D6EB228CDE0400F45338 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6EA228CDE0400F45338 /* SlideInPresentationAnimator.swift */; };
 		3F6004A3228C055A007DFB8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004A2228C055A007DFB8E /* AppDelegate.swift */; };
 		3F6004A5228C055A007DFB8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004A4228C055A007DFB8E /* ViewController.swift */; };
 		3F6004A8228C055A007DFB8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6004A6228C055A007DFB8E /* Main.storyboard */; };
@@ -20,6 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		1496D6DD228CACB800F45338 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
+		1496D6E2228CB16000F45338 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		1496D6E4228CC01800F45338 /* ProjectFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFormViewController.swift; sourceTree = "<group>"; };
+		1496D6E6228CC27F00F45338 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
+		1496D6E8228CC5B300F45338 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
+		1496D6EA228CDE0400F45338 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
 		3F60049F228C0559007DFB8E /* ProjectManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6004A2228C055A007DFB8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6004A4228C055A007DFB8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +69,10 @@
 			children = (
 				3F6004A4228C055A007DFB8E /* ViewController.swift */,
 				3F6004B7228C0DCE007DFB8E /* MasterViewController.swift */,
+				1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */,
+				1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */,
 				3F6004B9228C0F0F007DFB8E /* DetailViewController.swift */,
+				1496D6E4228CC01800F45338 /* ProjectFormViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -62,8 +81,28 @@
 			isa = PBXGroup;
 			children = (
 				3F6004BB228C0FD4007DFB8E /* Monster.swift */,
+				1496D6DD228CACB800F45338 /* Project.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1496D6E1228CB13900F45338 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1496D6E2228CB16000F45338 /* ProjectTableViewCell.swift */,
+				1496D6EC228CDE2700F45338 /* Presentation */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1496D6EC228CDE2700F45338 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1496D6E6228CC27F00F45338 /* SlideInPresentationManager.swift */,
+				1496D6E8228CC5B300F45338 /* SlideInPresentationController.swift */,
+				1496D6EA228CDE0400F45338 /* SlideInPresentationAnimator.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		3F600496228C0559007DFB8E = {
@@ -94,6 +133,7 @@
 				3F6004AC228C055A007DFB8E /* Assets.xcassets */,
 				3F6004AE228C055A007DFB8E /* LaunchScreen.storyboard */,
 				3F6004B1228C055A007DFB8E /* Info.plist */,
+				1496D6E1228CB13900F45338 /* Views */,
 				3F6004A9228C055A007DFB8E /* ProjectManager.xcdatamodeld */,
 			);
 			path = ProjectManager;
@@ -214,8 +254,16 @@
 				3F6004AB228C055A007DFB8E /* ProjectManager.xcdatamodeld in Sources */,
 				3F6004BA228C0F0F007DFB8E /* DetailViewController.swift in Sources */,
 				3F6004A5228C055A007DFB8E /* ViewController.swift in Sources */,
+				1496D6E7228CC27F00F45338 /* SlideInPresentationManager.swift in Sources */,
 				3F6004BC228C0FD4007DFB8E /* Monster.swift in Sources */,
+				1496D6E3228CB16000F45338 /* ProjectTableViewCell.swift in Sources */,
+				1496D6EB228CDE0400F45338 /* SlideInPresentationAnimator.swift in Sources */,
+				1496D6DC228CAC5500F45338 /* ProjectTableViewController.swift in Sources */,
 				3F6004A3228C055A007DFB8E /* AppDelegate.swift in Sources */,
+				1496D6E0228CAF6C00F45338 /* ProjectDetailViewController.swift in Sources */,
+				1496D6DE228CACB800F45338 /* Project.swift in Sources */,
+				1496D6E5228CC01800F45338 /* ProjectFormViewController.swift in Sources */,
+				1496D6E9228CC5B300F45338 /* SlideInPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +406,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.ProjectManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -373,7 +421,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.ProjectManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

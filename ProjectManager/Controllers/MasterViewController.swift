@@ -30,6 +30,7 @@ class MasterViewController: UITableViewController {
     ]
     
     weak var delegate: MonsterSelectionDelegate?
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +59,6 @@ class MasterViewController: UITableViewController {
         let monster = monsters[indexPath.row]
         cell.textLabel?.text = monster.name
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedMonster = monsters[indexPath.row]
-        delegate?.monsterSelected(selectedMonster)
-        if let detailViewController = delegate as? DetailViewController,
-            let detailNavigationController = detailViewController.navigationController {
-            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
-        }
     }
 
     /*
