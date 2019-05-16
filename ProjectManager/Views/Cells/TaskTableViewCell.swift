@@ -8,9 +8,7 @@
 
 import UIKit
 
-class TaskTableViewCell: UITableViewCell {
-    
-    static let identifier = "TaskTableViewCell"
+class TaskTableViewCell: UITableViewCell, Cell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

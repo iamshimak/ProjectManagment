@@ -8,12 +8,10 @@
 
 import UIKit
 
-class ProjectTableViewCell: UITableViewCell {
+class ProjectTableViewCell: UITableViewCell, Cell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
-    static let identifier = "ProjectTableViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        
+        IQKeyboardManager.shared.enable = true
         
         return true
     }
