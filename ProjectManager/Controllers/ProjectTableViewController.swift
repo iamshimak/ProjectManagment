@@ -20,9 +20,22 @@ class ProjectTableViewController: UITableViewController {
     var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Project>!
     
+    fileprivate func setupFetchedResultsController() {
+        let fetchRequest:NSFetchRequest<Project> = Project.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "dueDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "projects")
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupFetchedResultsController()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -58,7 +71,7 @@ class ProjectTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let aNotebook = fetchedResultsController.object(at: indexPath)
+        let project = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: ProjectTableViewCell.defaultReuseIdentifier, for: indexPath) as! ProjectTableViewCell
         
         // Configure cell
@@ -89,6 +102,7 @@ class ProjectTableViewController: UITableViewController {
 
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
+            controller.dataController = dataController
         }
     }
     

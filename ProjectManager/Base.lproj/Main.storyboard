@@ -309,7 +309,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4mb-rf-hbM">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4mb-rf-hbM">
                                                 <rect key="frame" x="10" y="112" width="748" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="579648223.75641">
                                                     <!--2019-05-15 21:23:43 +0000-->
@@ -321,7 +321,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6lu-pf-vkM">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="6lu-pf-vkM">
                                                 <rect key="frame" x="10" y="369" width="748" height="29"/>
                                                 <segments>
                                                     <segment title="Low"/>
@@ -348,6 +348,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whF-zW-CcR">
                                                 <rect key="frame" x="361" y="649" width="46" height="30"/>
                                                 <state key="normal" title="Create"/>
+                                                <connections>
+                                                    <action selector="save:" destination="gth-od-dxR" eventType="touchUpInside" id="cIL-jm-0KB"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to Calender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvS-rJ-olT">
                                                 <rect key="frame" x="10" y="588" width="124" height="31"/>
@@ -420,6 +423,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1LB-81-LGx"/>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="4mb-rf-hbM" id="VZN-mX-CIe"/>
+                        <outlet property="notesTextview" destination="tB9-FV-82b" id="Yxe-AK-W0L"/>
+                        <outlet property="notificationSwitch" destination="NT6-rS-QWO" id="FcD-J0-Xzw"/>
+                        <outlet property="prioritySegment" destination="6lu-pf-vkM" id="jkG-yH-jY5"/>
+                        <outlet property="projectTextField" destination="PyT-QI-vzz" id="FnD-s6-fsf"/>
+                        <outlet property="saveButton" destination="whF-zW-CcR" id="s7N-y9-7MJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4k-7C-e7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
