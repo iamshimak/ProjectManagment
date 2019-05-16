@@ -6,5 +6,6 @@ target 'ProjectManager' do
   use_frameworks!
 
   # Pods for ProjectManager
+  pod 'IQKeyboardManagerSwift'
 
 end
