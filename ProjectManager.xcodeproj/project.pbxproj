@@ -21,14 +21,14 @@
 		1496D6E7228CC27F00F45338 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E6228CC27F00F45338 /* SlideInPresentationManager.swift */; };
 		1496D6E9228CC5B300F45338 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E8228CC5B300F45338 /* SlideInPresentationController.swift */; };
 		1496D6EB228CDE0400F45338 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6EA228CDE0400F45338 /* SlideInPresentationAnimator.swift */; };
+		14C00CFA22933E00007077DC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C00CF922933E00007077DC /* SplitViewController.swift */; };
+		14C00CFC2293555D007077DC /* DayCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C00CFB2293555D007077DC /* DayCounterView.swift */; };
 		3F6004A3228C055A007DFB8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004A2228C055A007DFB8E /* AppDelegate.swift */; };
 		3F6004A5228C055A007DFB8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004A4228C055A007DFB8E /* ViewController.swift */; };
 		3F6004A8228C055A007DFB8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6004A6228C055A007DFB8E /* Main.storyboard */; };
 		3F6004AB228C055A007DFB8E /* ProjectManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004A9228C055A007DFB8E /* ProjectManager.xcdatamodeld */; };
 		3F6004AD228C055A007DFB8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F6004AC228C055A007DFB8E /* Assets.xcassets */; };
 		3F6004B0228C055A007DFB8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6004AE228C055A007DFB8E /* LaunchScreen.storyboard */; };
-		3F6004B8228C0DCE007DFB8E /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004B7228C0DCE007DFB8E /* MasterViewController.swift */; };
-		3F6004BA228C0F0F007DFB8E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004B9228C0F0F007DFB8E /* DetailViewController.swift */; };
 		3F6004BC228C0FD4007DFB8E /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004BB228C0FD4007DFB8E /* Monster.swift */; };
 		41F3FAF3B00D2D14396FCB2A /* Pods_ProjectManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D27B3BB8E907A86F8F7D /* Pods_ProjectManager.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +48,8 @@
 		1496D6E6228CC27F00F45338 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
 		1496D6E8228CC5B300F45338 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		1496D6EA228CDE0400F45338 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
+		14C00CF922933E00007077DC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		14C00CFB2293555D007077DC /* DayCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCounterView.swift; sourceTree = "<group>"; };
 		3F60049F228C0559007DFB8E /* ProjectManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6004A2228C055A007DFB8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6004A4228C055A007DFB8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,8 +58,6 @@
 		3F6004AC228C055A007DFB8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F6004AF228C055A007DFB8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F6004B1228C055A007DFB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F6004B7228C0DCE007DFB8E /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		3F6004B9228C0F0F007DFB8E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3F6004BB228C0FD4007DFB8E /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		43D4D27B3BB8E907A86F8F7D /* Pods_ProjectManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E14D2F50E4F1ED25CAAF0B1 /* Pods-ProjectManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManager.debug.xcconfig"; path = "Target Support Files/Pods-ProjectManager/Pods-ProjectManager.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,10 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				3F6004A4228C055A007DFB8E /* ViewController.swift */,
-				3F6004B7228C0DCE007DFB8E /* MasterViewController.swift */,
 				1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */,
+				14C00CF922933E00007077DC /* SplitViewController.swift */,
 				1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */,
-				3F6004B9228C0F0F007DFB8E /* DetailViewController.swift */,
 				1496D6E4228CC01800F45338 /* ProjectFormViewController.swift */,
 				1409F38D228CF37E008951B2 /* TaskFormViewController.swift */,
 			);
@@ -133,6 +132,7 @@
 				1407327C228DEAB0000A146E /* Protocols */,
 				1407327B228DEAA1000A146E /* Cells */,
 				1496D6EC228CDE2700F45338 /* Presentation */,
+				14C00CFB2293555D007077DC /* DayCounterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,9 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14073278228DE9D8000A146E /* Project+Extensions.swift in Sources */,
-				3F6004B8228C0DCE007DFB8E /* MasterViewController.swift in Sources */,
 				3F6004AB228C055A007DFB8E /* ProjectManager.xcdatamodeld in Sources */,
-				3F6004BA228C0F0F007DFB8E /* DetailViewController.swift in Sources */,
 				1407325A228DDEFF000A146E /* DataController.swift in Sources */,
 				14073281228E098C000A146E /* Date+Extension.swift in Sources */,
 				3F6004A5228C055A007DFB8E /* ViewController.swift in Sources */,
@@ -334,6 +332,8 @@
 				1496D6E0228CAF6C00F45338 /* ProjectDetailViewController.swift in Sources */,
 				1496D6E5228CC01800F45338 /* ProjectFormViewController.swift in Sources */,
 				1496D6E9228CC5B300F45338 /* SlideInPresentationController.swift in Sources */,
+				14C00CFC2293555D007077DC /* DayCounterView.swift in Sources */,
+				14C00CFA22933E00007077DC /* SplitViewController.swift in Sources */,
 				1407327E228DEADB000A146E /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

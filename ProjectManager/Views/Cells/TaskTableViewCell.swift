@@ -14,6 +14,10 @@ class TaskTableViewCell: UITableViewCell, Cell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setupCell(_ task: Task) {
+        print(task)
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

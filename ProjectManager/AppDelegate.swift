@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         detailViewController.dataController = dataController
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+
         
         IQKeyboardManager.shared.enable = true
         dataController.load()

@@ -24,7 +24,10 @@ class ProjectTableViewController: UITableViewController {
         let fetchRequest:NSFetchRequest<Project> = Project.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "dueDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "projects")
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                              managedObjectContext: dataController.viewContext,
+                                                              sectionNameKeyPath: nil,
+                                                              cacheName: "projects")
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
@@ -33,9 +36,17 @@ class ProjectTableViewController: UITableViewController {
         }
     }
     
+    func loadResults() {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.tableView(tableView, didSelectRowAt: indexPath)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -70,10 +81,12 @@ class ProjectTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Table view delegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let project = fetchedResultsController.object(at: indexPath)
         delegate?.projectSelected(project)
-        if let detailViewController = delegate as? DetailViewController,
+        if let detailViewController = delegate as? ProjectDetailViewController,
             let detailNavigationController = detailViewController.navigationController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
@@ -86,6 +99,8 @@ class ProjectTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ProjectFormViewController {
             slideInTransitioningDelegate.direction = .left
@@ -96,16 +111,6 @@ class ProjectTableViewController: UITableViewController {
             controller.dataController = dataController
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 
 }
 

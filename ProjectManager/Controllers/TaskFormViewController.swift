@@ -18,6 +18,7 @@ class TaskFormViewController: UIViewController {
     
     var dataController: DataController!
     var isEdit = false
+    var project: Project!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class TaskFormViewController: UIViewController {
             task.notes = notesTextField.text
             task.dueDate = dueDatePicker.date
             task.taskReminder = notificationSwitch.isOn
+            task.project = project
             
             try? dataController.viewContext.save()
             dismiss(animated: true, completion: nil)
