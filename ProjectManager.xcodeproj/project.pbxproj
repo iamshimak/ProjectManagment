@@ -14,6 +14,9 @@
 		14073281228E098C000A146E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14073280228E098C000A146E /* Date+Extension.swift */; };
 		1409F38E228CF37E008951B2 /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409F38D228CF37E008951B2 /* TaskFormViewController.swift */; };
 		1409F392228CFDB7008951B2 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409F391228CFDB7008951B2 /* TaskTableViewCell.swift */; };
+		1480D44B2295E33600ACC38E /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480D44A2295E33600ACC38E /* ProjectViewModel.swift */; };
+		1480D44D2295E36100ACC38E /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480D44C2295E36100ACC38E /* ProjectView.swift */; };
+		1480D450229613C100ACC38E /* CalenderEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480D44F229613C100ACC38E /* CalenderEventManager.swift */; };
 		1496D6DC228CAC5500F45338 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */; };
 		1496D6E0228CAF6C00F45338 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */; };
 		1496D6E3228CB16000F45338 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E2228CB16000F45338 /* ProjectTableViewCell.swift */; };
@@ -29,7 +32,6 @@
 		3F6004AB228C055A007DFB8E /* ProjectManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004A9228C055A007DFB8E /* ProjectManager.xcdatamodeld */; };
 		3F6004AD228C055A007DFB8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F6004AC228C055A007DFB8E /* Assets.xcassets */; };
 		3F6004B0228C055A007DFB8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6004AE228C055A007DFB8E /* LaunchScreen.storyboard */; };
-		3F6004BC228C0FD4007DFB8E /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6004BB228C0FD4007DFB8E /* Monster.swift */; };
 		41F3FAF3B00D2D14396FCB2A /* Pods_ProjectManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D27B3BB8E907A86F8F7D /* Pods_ProjectManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,9 @@
 		14073280228E098C000A146E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1409F38D228CF37E008951B2 /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
 		1409F391228CFDB7008951B2 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		1480D44A2295E33600ACC38E /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
+		1480D44C2295E36100ACC38E /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		1480D44F229613C100ACC38E /* CalenderEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderEventManager.swift; sourceTree = "<group>"; };
 		1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		1496D6E2228CB16000F45338 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -58,7 +63,6 @@
 		3F6004AC228C055A007DFB8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F6004AF228C055A007DFB8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F6004B1228C055A007DFB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F6004BB228C0FD4007DFB8E /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		43D4D27B3BB8E907A86F8F7D /* Pods_ProjectManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E14D2F50E4F1ED25CAAF0B1 /* Pods-ProjectManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManager.debug.xcconfig"; path = "Target Support Files/Pods-ProjectManager/Pods-ProjectManager.debug.xcconfig"; sourceTree = "<group>"; };
 		B16982F7CF3D42C4D5E25480 /* Pods-ProjectManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManager.release.xcconfig"; path = "Target Support Files/Pods-ProjectManager/Pods-ProjectManager.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +105,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1480D4492295E30700ACC38E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1480D44A2295E33600ACC38E /* ProjectViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1480D44E2296139700ACC38E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1480D44F229613C100ACC38E /* CalenderEventManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		1496D6D9228CAACF00F45338 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				14073259228DDEFF000A146E /* DataController.swift */,
-				3F6004BB228C0FD4007DFB8E /* Monster.swift */,
 				14073277228DE9D8000A146E /* Project+Extensions.swift */,
 				14073279228DEA09000A146E /* Task+Extension.swift */,
 				3F6004A9228C055A007DFB8E /* ProjectManager.xcdatamodeld */,
@@ -133,6 +152,7 @@
 				1407327B228DEAA1000A146E /* Cells */,
 				1496D6EC228CDE2700F45338 /* Presentation */,
 				14C00CFB2293555D007077DC /* DayCounterView.swift */,
+				1480D44C2295E36100ACC38E /* ProjectView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,9 +189,11 @@
 			isa = PBXGroup;
 			children = (
 				3F6004A2228C055A007DFB8E /* AppDelegate.swift */,
+				1480D44E2296139700ACC38E /* Utils */,
 				1496D6D9228CAACF00F45338 /* Controllers */,
 				1496D6DA228CAAE100F45338 /* Models */,
 				1496D6E1228CB13900F45338 /* Views */,
+				1480D4492295E30700ACC38E /* ViewModel */,
 				1407327F228E096B000A146E /* Extensions */,
 				3F6004A6228C055A007DFB8E /* Main.storyboard */,
 				3F6004AC228C055A007DFB8E /* Assets.xcassets */,
@@ -319,9 +341,9 @@
 				3F6004AB228C055A007DFB8E /* ProjectManager.xcdatamodeld in Sources */,
 				1407325A228DDEFF000A146E /* DataController.swift in Sources */,
 				14073281228E098C000A146E /* Date+Extension.swift in Sources */,
+				1480D44B2295E33600ACC38E /* ProjectViewModel.swift in Sources */,
 				3F6004A5228C055A007DFB8E /* ViewController.swift in Sources */,
 				1496D6E7228CC27F00F45338 /* SlideInPresentationManager.swift in Sources */,
-				3F6004BC228C0FD4007DFB8E /* Monster.swift in Sources */,
 				1496D6E3228CB16000F45338 /* ProjectTableViewCell.swift in Sources */,
 				1496D6EB228CDE0400F45338 /* SlideInPresentationAnimator.swift in Sources */,
 				1407327A228DEA09000A146E /* Task+Extension.swift in Sources */,
@@ -333,7 +355,9 @@
 				1496D6E5228CC01800F45338 /* ProjectFormViewController.swift in Sources */,
 				1496D6E9228CC5B300F45338 /* SlideInPresentationController.swift in Sources */,
 				14C00CFC2293555D007077DC /* DayCounterView.swift in Sources */,
+				1480D44D2295E36100ACC38E /* ProjectView.swift in Sources */,
 				14C00CFA22933E00007077DC /* SplitViewController.swift in Sources */,
+				1480D450229613C100ACC38E /* CalenderEventManager.swift in Sources */,
 				1407327E228DEADB000A146E /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

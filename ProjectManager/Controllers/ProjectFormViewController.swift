@@ -10,6 +10,7 @@ import UIKit
 
 class ProjectFormViewController: UIViewController {
 
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var projectTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var prioritySegment: UISegmentedControl!
@@ -18,21 +19,44 @@ class ProjectFormViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     var dataController: DataController!
-    var isEdit = false
+    var editProject: Project?
+    var onAddToCalender: (() -> Void)?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupForm()
+    }
+    
+    func setupForm() {
+        guard let project = editProject else {
+            datePicker.minimumDate = Date()
+            return
+        }
+        
+        navigationBar.topItem?.title = "Edit Project \(project.name!)"
+        projectTextField.text = project.name
+        notesTextview.text = project.notes
+        datePicker.date = project.dueDate!.isGreaterThanDate(Date()) ? project.dueDate! : Date()
+        setPriority(project.priority!)
+        notificationSwitch.isOn = project.notification
     }
     
     @IBAction func save(_ sender: Any) {
         if validate() {
+            var project: Project! = nil
+            if editProject != nil {
+                project = editProject
+            } else {
+                project = Project(context: dataController.viewContext)
+            }
+            
             let name = projectTextField.text
             let date = datePicker.date
             let priority = getPriority()
             let notes = notesTextview.text
             let notification = notificationSwitch.isOn
             
-            let project = Project(context: dataController.viewContext)
             project.name = name
             project.dueDate = date
             project.priority = priority
@@ -40,7 +64,11 @@ class ProjectFormViewController: UIViewController {
             project.notification = notification
             
             try? dataController.viewContext.save()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: {
+                if self.notificationSwitch.isOn {
+                    self.onAddToCalender?()
+                }
+            })
         }
     }
     
@@ -60,20 +88,22 @@ class ProjectFormViewController: UIViewController {
         return priority
     }
     
+    func setPriority(_ value: String) {
+        switch value {
+        case "low":
+            prioritySegment.setEnabled(true, forSegmentAt: 0)
+        case "medium":
+            prioritySegment.setEnabled(true, forSegmentAt: 1)
+        case "high":
+            prioritySegment.setEnabled(true, forSegmentAt: 2)
+        default:
+            break
+        }
+    }
+    
     func validate() -> Bool {
         let textValidation = projectTextField.text != nil && projectTextField.text!.count > 0
         let dateValidation = datePicker.date.isGreaterThanDate(Date())
         return textValidation && dateValidation
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

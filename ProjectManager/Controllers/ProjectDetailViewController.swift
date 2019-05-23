@@ -14,6 +14,7 @@ import EventKitUI
 class ProjectDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var projectView: ProjectView!
     @IBOutlet weak var dayCounterView: DayCounterView!
     
     var project: Project! {
@@ -22,13 +23,19 @@ class ProjectDetailViewController: UIViewController {
         }
     }
     
+    var projectViewModel: ProjectViewModel = ProjectViewModel()
     var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Task>!
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     
+    var selectedTaskIndex: IndexPath!
+    
     func refreshUI() {
         loadViewIfNeeded()
         setupFetchedResultsController()
+        
+        let tasks = fetchedResultsController.fetchedObjects
+        projectViewModel.configure(projectView, project: project, tasks: tasks)
     }
     
     /// A date formatter for date text in note cells
@@ -80,6 +87,13 @@ class ProjectDetailViewController: UIViewController {
         fetchedResultsController = nil
     }
     
+    // Deletes the task at the specified index path
+    func deleteTask(at indexPath: IndexPath) {
+        let task = fetchedResultsController.object(at: indexPath)
+        dataController.viewContext.delete(task)
+        try? dataController.viewContext.save()
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,30 +105,15 @@ class ProjectDetailViewController: UIViewController {
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
             controller.project = project
+            
+            if segue.identifier == "EditTask" {
+                controller.editTask = fetchedResultsController.object(at: selectedTaskIndex)
+            }
         }
     }
     
-    @IBAction func addToCalender(_ sender: Any) {
-        let eventStore = EKEventStore()
-        
-        eventStore.requestAccess(to: EKEntityType.event, completion:{ granted, error in
-            DispatchQueue.main.async {
-                // Present Calender in Main Thread
-                if granted && error == nil {
-                    let event = EKEvent(eventStore: eventStore)
-                    event.title = self.project.name
-                    event.endDate = self.project.dueDate
-                    event.notes = self.project.notes
-                    event.calendar = eventStore.defaultCalendarForNewEvents
-                    
-                    let eventController = EKEventEditViewController()
-                    eventController.event = event
-                    eventController.eventStore = eventStore
-                    eventController.editViewDelegate = self
-                    self.present(eventController, animated: true, completion: nil)
-                }
-            }
-        })
+    @IBAction func addToCalender(_ sender: Any?) {
+        CalenderEventManager.createProjectEvent(viewController: self, project: project)
     }
 
 }
@@ -138,18 +137,32 @@ extension ProjectDetailViewController: UITableViewDataSource {
 }
 
 extension ProjectDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+            case .delete: deleteTask(at: indexPath)
+            default: () // Unsupported
+        }
+    }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .default, title: "Edit", handler: { action, indexpath in
+            self.selectedTaskIndex = indexPath
+            self.performSegue(withIdentifier: "EditTask", sender: nil)
+        });
+        edit.backgroundColor = UIColor.blue;
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { action, indexpath in
+            self.deleteTask(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        });
+        
+        return [delete, edit];
+    }
 }
 
 extension ProjectDetailViewController: ProjectSelectionDelegate {
     func projectSelected(_ newProject: Project) {
         project = newProject
-    }
-}
-
-extension ProjectDetailViewController: EKEventEditViewDelegate {
-    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
-        controller.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -196,4 +209,10 @@ extension ProjectDetailViewController: NSFetchedResultsControllerDelegate {
         tableView.endUpdates()
     }
     
+}
+
+extension ProjectDetailViewController: EKEventEditViewDelegate {
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

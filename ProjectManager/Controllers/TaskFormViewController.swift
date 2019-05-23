@@ -10,23 +10,47 @@ import UIKit
 
 class TaskFormViewController: UIViewController {
 
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var taskTextField: UITextField!
-    @IBOutlet weak var notesTextField: UILabel!
+    @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
     
     var dataController: DataController!
-    var isEdit = false
+    var editTask: Task?
     var project: Project!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dueDatePicker.minimumDate = Date()
+        dueDatePicker.maximumDate = project.dueDate!
+        setupForm()
+    }
+    
+    func setupForm() {
+        guard let task = editTask else {
+            dueDatePicker.minimumDate = Date()
+            return
+        }
+        
+        navigationBar.topItem?.title = "Edit Task \(task.name!)"
+        taskTextField.text = task.name
+        notesTextField.text = task.notes
+        dueDatePicker.date = task.dueDate!.isGreaterThanDate(Date()) ? task.dueDate! : Date()
+        notificationSwitch.isOn = task.taskReminder
     }
     
     @IBAction func save(_ sender: Any) {
         if validate() {
-            let task = Task(context: dataController.viewContext)
+            var task: Task! = nil
+            if editTask != nil {
+                task = editTask
+            } else {
+                task = Task(context: dataController.viewContext)
+            }
+            
             task.name = taskTextField.text
             task.notes = notesTextField.text
             task.dueDate = dueDatePicker.date
@@ -43,15 +67,5 @@ class TaskFormViewController: UIViewController {
         let dateValidation = dueDatePicker.date.isGreaterThanDate(Date())
         return textValidation && dateValidation
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
