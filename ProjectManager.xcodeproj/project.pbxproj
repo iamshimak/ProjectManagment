@@ -17,6 +17,7 @@
 		1480D44B2295E33600ACC38E /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480D44A2295E33600ACC38E /* ProjectViewModel.swift */; };
 		1480D44D2295E36100ACC38E /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480D44C2295E36100ACC38E /* ProjectView.swift */; };
 		1480D450229613C100ACC38E /* CalenderEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480D44F229613C100ACC38E /* CalenderEventManager.swift */; };
+		148182A2229638BB008FB53E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148182A1229638BB008FB53E /* NotificationManager.swift */; };
 		1496D6DC228CAC5500F45338 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */; };
 		1496D6E0228CAF6C00F45338 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */; };
 		1496D6E3228CB16000F45338 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1496D6E2228CB16000F45338 /* ProjectTableViewCell.swift */; };
@@ -46,6 +47,7 @@
 		1480D44A2295E33600ACC38E /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		1480D44C2295E36100ACC38E /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		1480D44F229613C100ACC38E /* CalenderEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderEventManager.swift; sourceTree = "<group>"; };
+		148182A1229638BB008FB53E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		1496D6DB228CAC5500F45338 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		1496D6DF228CAF6C00F45338 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		1496D6E2228CB16000F45338 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				1480D44F229613C100ACC38E /* CalenderEventManager.swift */,
+				148182A1229638BB008FB53E /* NotificationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				14C00CFA22933E00007077DC /* SplitViewController.swift in Sources */,
 				1480D450229613C100ACC38E /* CalenderEventManager.swift in Sources */,
 				1407327E228DEADB000A146E /* Cell.swift in Sources */,
+				148182A2229638BB008FB53E /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

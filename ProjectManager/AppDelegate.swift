@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
@@ -34,9 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
 
         
-        IQKeyboardManager.shared.enable = true
         dataController.load()
         
+        //Confirm Delegete and request for permission
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.delegate = NotificationManager.shared
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        notificationCenter.requestAuthorization(options: options) { didAllow, error in
+            if !didAllow {
+                print("User has declined notifications")
+            }
+        }
+        
+        IQKeyboardManager.shared.enable = true
         return true
     }
 
@@ -68,6 +79,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveViewContext() {
         try? dataController.viewContext.save()
     }
-
 }
 

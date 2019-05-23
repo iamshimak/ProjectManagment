@@ -49,12 +49,6 @@ class ProjectTableViewController: UITableViewController {
         let indexPath = IndexPath(row: 0, section: 0)
         // TODO check indexpath available before select
         self.tableView(tableView, didSelectRowAt: indexPath)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func didReceiveMemoryWarning() {

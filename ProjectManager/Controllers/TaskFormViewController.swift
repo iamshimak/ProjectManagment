@@ -57,6 +57,10 @@ class TaskFormViewController: UIViewController {
             task.taskReminder = notificationSwitch.isOn
             task.project = project
             
+            if editTask == nil && notificationSwitch.isOn {
+                NotificationManager.shared.scheduleNotificationFor(task: task)
+            }
+            
             try? dataController.viewContext.save()
             dismiss(animated: true, completion: nil)
         }
