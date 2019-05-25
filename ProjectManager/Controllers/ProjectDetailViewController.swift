@@ -15,7 +15,6 @@ class ProjectDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var projectView: ProjectView!
-    @IBOutlet weak var dayCounterView: DayCounterView!
     
     var project: Project! {
         didSet {
@@ -32,10 +31,14 @@ class ProjectDetailViewController: UIViewController {
     
     func refreshUI() {
         loadViewIfNeeded()
-        setupFetchedResultsController()
         
-        let tasks = fetchedResultsController.fetchedObjects
-        projectViewModel.configure(projectView, project: project, tasks: tasks)
+        if project != nil {
+            setupFetchedResultsController()
+            let tasks = fetchedResultsController.fetchedObjects
+            projectViewModel.configure(projectView, project: project, tasks: tasks)
+        } else {
+            projectViewModel.configure(projectView, project: nil, tasks: nil)
+        }
     }
     
     /// A date formatter for date text in note cells
@@ -67,6 +70,12 @@ class ProjectDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupKeyboardHide()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        projectView.layoutSubviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +94,15 @@ class ProjectDetailViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
+    }
+    
+    func setupKeyboardHide() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     // Deletes the task at the specified index path
@@ -129,10 +147,9 @@ extension ProjectDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let task = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.defaultReuseIdentifier, for: indexPath) as! TaskTableViewCell
-        cell.setupCell(task)
+        cell.setupCell(task, dataController: dataController)
         return cell
     }
-    
     
 }
 
@@ -161,7 +178,7 @@ extension ProjectDetailViewController: UITableViewDelegate {
 }
 
 extension ProjectDetailViewController: ProjectSelectionDelegate {
-    func projectSelected(_ newProject: Project) {
+    func projectSelected(_ newProject: Project?) {
         project = newProject
     }
 }
@@ -179,9 +196,11 @@ extension ProjectDetailViewController: NSFetchedResultsControllerDelegate {
             break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
-            break
+        break
         case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
+            let tasks = fetchedResultsController.fetchedObjects
+            projectViewModel.configure(projectView, project: project, tasks: tasks)
+            tableView.reloadRows(at: [indexPath!], with: .none)
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }

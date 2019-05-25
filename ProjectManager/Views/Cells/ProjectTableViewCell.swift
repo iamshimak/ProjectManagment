@@ -22,8 +22,4 @@ class ProjectTableViewCell: UITableViewCell, Cell {
         dateLabel.text = project.dueDate?.formatDate()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
 }

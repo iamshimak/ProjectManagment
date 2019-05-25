@@ -74,4 +74,8 @@ extension Date {
     func days(sinceDate: Date) -> Int? {
         return Calendar.current.dateComponents([.day], from: sinceDate, to: self).day
     }
+    
+    func days() -> Int {
+        return Calendar.current.component(.day, from: self)
+    }
 }

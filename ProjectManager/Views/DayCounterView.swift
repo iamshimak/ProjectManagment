@@ -33,11 +33,16 @@ import UIKit
     
     @IBInspectable var progress: CGFloat = 50 {
         didSet {
-            foregroundLayer.strokeEnd = progress / 100.0
-            if showText {
-                label.text = "\(progress)%"
-            }
+            foregroundLayer.strokeEnd = progress / 100
+            label.text = "\(Int(progress))%"
             configLabel()
+        }
+    }
+    
+    @IBInspectable var text: String? = nil {
+        didSet {
+            // label.text = text
+            // configLabel()
         }
     }
     
@@ -46,6 +51,15 @@ import UIKit
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
+        configLabel()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setNeedsDisplay()
+        layoutDone = false
+        setupView()
+        configLabel()
     }
     
     //MARK: Private
@@ -56,7 +70,7 @@ import UIKit
     private var radius: CGFloat {
         get{
             if self.frame.width < self.frame.height { return (self.frame.width - lineWidth)/2 }
-            else { return (self.frame.height - lineWidth)/2 }
+            else { return (self.frame.height - lineWidth) / 2 }
         }
     }
     
@@ -119,6 +133,7 @@ import UIKit
             setupView()
             label.text = tempText
             layoutDone = true
+            configLabel()
         }
     }
     

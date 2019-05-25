@@ -9,4 +9,8 @@
 import Foundation
 
 extension Project {
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+        createdDate = Date()
+    }
 }

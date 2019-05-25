@@ -12,7 +12,7 @@ import EventKit
 import EventKitUI
 
 protocol ProjectSelectionDelegate: class {
-    func projectSelected(_ newProject: Project)
+    func projectSelected(_ newProject: Project?)
 }
 
 class ProjectTableViewController: UITableViewController {
@@ -46,9 +46,13 @@ class ProjectTableViewController: UITableViewController {
         super.viewDidLoad()
         setupFetchedResultsController()
         
-        let indexPath = IndexPath(row: 0, section: 0)
-        // TODO check indexpath available before select
-        self.tableView(tableView, didSelectRowAt: indexPath)
+        let numberOfObjects = fetchedResultsController.sections?[0].numberOfObjects ?? 0
+        if numberOfObjects > 0 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.tableView(tableView, didSelectRowAt: indexPath)
+        } else {
+            delegate?.projectSelected(nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -140,9 +144,19 @@ extension ProjectTableViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
+            var aIndexPath: IndexPath!
+            if indexPath == nil {
+                aIndexPath = newIndexPath
+            } else {
+                aIndexPath = indexPath
+            }
+            
+            let project = fetchedResultsController.object(at: aIndexPath)
+            delegate?.projectSelected(project)
             break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
+            delegate?.projectSelected(nil)
             break
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)

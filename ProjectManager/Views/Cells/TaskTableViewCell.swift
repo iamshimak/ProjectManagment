@@ -10,20 +10,24 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell, Cell {
 
-    @IBOutlet weak var priorityView: UIView!
     @IBOutlet weak var progressView: DayCounterView!
     @IBOutlet weak var taskName: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var progressLevelTextField: UITextField!
-    @IBOutlet weak var editButton: UIButton!
+    
+    private var task: Task?
+    private var dataController: DataController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        progressLevelTextField.delegate = self
     }
     
-    func setupCell(_ task: Task) {
+    func setupCell(_ task: Task, dataController: DataController) {
+        self.task = task
+        self.dataController = dataController
+        
         taskName.text = task.name
         notesLabel.text = task.notes
         dueDateLabel.text = task.dueDate?.formatDate()
@@ -31,14 +35,44 @@ class TaskTableViewCell: UITableViewCell, Cell {
         progressLevelTextField.text = "\(task.progressLevel)"
         progressView.progress = CGFloat(task.progressLevel)
     }
+    
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+extension TaskTableViewCell: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
     }
     
-    @IBAction func editAction(_ sender: Any) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let string = textField.text, let number = NumberFormatter().number(from: string) {
+            task?.progressLevel = Int16(truncating: number)
+            try? dataController.viewContext.save()
+        }
     }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let value = textField.text, let swtRange = Range(range, in: value) {
+            let fullString = value.replacingCharacters(in: swtRange, with: string)
+            if let number = NumberFormatter().number(from: fullString) {
+                if Int(truncating: number) <= 100 {
+                    progressView.progress = CGFloat(truncating: number)
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
 }
