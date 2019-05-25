@@ -17,12 +17,19 @@ class TaskFormViewController: UIViewController {
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var taskErroLabel: UILabel!
+    @IBOutlet weak var dateErroLabel: UILabel!
+    
     var dataController: DataController!
     var editTask: Task?
     var project: Project!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        taskErroLabel.isHidden = true
+        dateErroLabel.isHidden = true
         
         dueDatePicker.minimumDate = Date()
         dueDatePicker.maximumDate = project.dueDate!
@@ -31,7 +38,7 @@ class TaskFormViewController: UIViewController {
     
     func setupForm() {
         guard let task = editTask else {
-            dueDatePicker.minimumDate = Date()
+            dueDatePicker.minimumDate = Date().addDays(daysToAdd: 1)
             return
         }
         
@@ -44,6 +51,8 @@ class TaskFormViewController: UIViewController {
     
     @IBAction func save(_ sender: Any) {
         if validate() {
+            taskErroLabel.isHidden = true
+            
             var task: Task! = nil
             if editTask != nil {
                 task = editTask
@@ -68,6 +77,10 @@ class TaskFormViewController: UIViewController {
     
     private func validate() -> Bool {
         let textValidation = taskTextField.text != nil && taskTextField.text!.count > 0
+        if !textValidation {
+            taskErroLabel.isHidden = false
+        }
+        
         let dateValidation = dueDatePicker.date.isGreaterThanDate(Date())
         return textValidation && dateValidation
     }

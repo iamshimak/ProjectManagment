@@ -18,6 +18,8 @@ class ProjectFormViewController: UIViewController {
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var nameErrorLabel: UILabel!
+    
     var dataController: DataController!
     var editProject: Project?
     var onAddToCalender: (() -> Void)?
@@ -29,8 +31,9 @@ class ProjectFormViewController: UIViewController {
     }
     
     func setupForm() {
+        nameErrorLabel.isHidden = true
         guard let project = editProject else {
-            datePicker.minimumDate = Date()
+            datePicker.minimumDate = Date().addDays(daysToAdd: 1)
             return
         }
         
@@ -44,6 +47,8 @@ class ProjectFormViewController: UIViewController {
     
     @IBAction func save(_ sender: Any) {
         if validate() {
+            nameErrorLabel.isHidden = true
+            
             var project: Project! = nil
             if editProject != nil {
                 project = editProject
@@ -103,6 +108,11 @@ class ProjectFormViewController: UIViewController {
     
     func validate() -> Bool {
         let textValidation = projectTextField.text != nil && projectTextField.text!.count > 0
+        
+        if !textValidation {
+            nameErrorLabel.isHidden = false
+        }
+        
         let dateValidation = datePicker.date.isGreaterThanDate(Date())
         return textValidation && dateValidation
     }
