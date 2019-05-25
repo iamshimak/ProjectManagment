@@ -65,7 +65,8 @@ class ProjectViewModel {
         view.nameLabel.text = project.name
         view.notesLabel.text = project.notes
         view.priorityLabel.text = "Priority - \(project.priority!)"
-        view.dateLabel.text = project.dueDate!.formatDate()
+        view.startDateLabel.text = "Start Date - \(project.createdDate!.formatDate())"
+        view.endDateLabel.text = "End Date - \(project.dueDate!.formatDate())"
         
         let days = project.dueDate!.days(sinceDate: Date())!
         view.daysLabel.text = "\(days > 0 ? days : 0)"
@@ -79,7 +80,7 @@ class ProjectViewModel {
         view.nameLabel.text = ""
         view.notesLabel.text = ""
         view.priorityLabel.text = ""
-        view.dateLabel.text = ""
+        view.endDateLabel.text = ""
         view.daysLabel.text = ""
         view.progressView.progress = 0
         view.taskLeftView.progress = 0

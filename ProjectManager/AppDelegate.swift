@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import ChameleonFramework
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
@@ -47,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        Chameleon.setGlobalThemeUsingPrimaryColor(FlatGray(), withSecondaryColor: FlatWhite(), andContentStyle: .contrast)
         IQKeyboardManager.shared.enable = true
         return true
     }

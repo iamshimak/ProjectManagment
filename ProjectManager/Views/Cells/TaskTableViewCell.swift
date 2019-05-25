@@ -13,7 +13,8 @@ class TaskTableViewCell: UITableViewCell, Cell {
     @IBOutlet weak var progressView: DayCounterView!
     @IBOutlet weak var taskName: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
-    @IBOutlet weak var dueDateLabel: UILabel!
+    @IBOutlet weak var startDate: UILabel!
+    @IBOutlet weak var endDate: UILabel!
     @IBOutlet weak var progressLevelTextField: UITextField!
     
     private var task: Task?
@@ -30,10 +31,18 @@ class TaskTableViewCell: UITableViewCell, Cell {
         
         taskName.text = task.name
         notesLabel.text = task.notes
-        dueDateLabel.text = task.dueDate?.formatDate()
+        startDate.text = task.startDate?.formatDate()
+        endDate.text = task.dueDate?.formatDate()
         
         progressLevelTextField.text = "\(task.progressLevel)"
-        progressView.progress = CGFloat(task.progressLevel)
+
+        let days = task.dueDate!.days(sinceDate: task.startDate!)!
+        let leftDays = task.dueDate!.days(sinceDate: Date())!
+        var average = 0.0
+        if days > 0 && leftDays > 0 {
+            average = Double(leftDays) / Double(days) * 100.0
+        }
+        progressView.progress = CGFloat(average)
     }
     
 }
@@ -65,7 +74,6 @@ extension TaskTableViewCell: UITextFieldDelegate {
             let fullString = value.replacingCharacters(in: swtRange, with: string)
             if let number = NumberFormatter().number(from: fullString) {
                 if Int(truncating: number) <= 100 {
-                    progressView.progress = CGFloat(truncating: number)
                     return true
                 } else {
                     return false

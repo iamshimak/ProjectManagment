@@ -31,14 +31,13 @@ class TaskFormViewController: UIViewController {
         taskErroLabel.isHidden = true
         dateErroLabel.isHidden = true
         
-        dueDatePicker.minimumDate = Date()
+        dueDatePicker.minimumDate = Date().addDays(daysToAdd: 1)
         dueDatePicker.maximumDate = project.dueDate!
         setupForm()
     }
     
     func setupForm() {
         guard let task = editTask else {
-            dueDatePicker.minimumDate = Date().addDays(daysToAdd: 1)
             return
         }
         

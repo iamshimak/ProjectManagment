@@ -14,7 +14,8 @@ class ProjectView: UIView {
     @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
     
     @IBOutlet weak var progressView: DayCounterView!
     @IBOutlet weak var taskLeftView: DayCounterView!
