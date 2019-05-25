@@ -1,16 +1,30 @@
 PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - IQKeyboardManagerSwift (6.3.0)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - IQKeyboardManagerSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - IQKeyboardManagerSwift
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
 
-PODFILE CHECKSUM: 2250201ad72ce8421cf20d94160dd7afa240579e
+PODFILE CHECKSUM: 473907a114c89155542145172a6ddd4328ad9d43
 
 COCOAPODS: 1.6.1

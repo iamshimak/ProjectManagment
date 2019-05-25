@@ -7,5 +7,6 @@ target 'ProjectManager' do
 
   # Pods for ProjectManager
   pod 'IQKeyboardManagerSwift'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
 end
