@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class ProjectTableViewCell: UITableViewCell, Cell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var priorityView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +22,17 @@ class ProjectTableViewCell: UITableViewCell, Cell {
     func setupCell(_ project: Project) {
         nameLabel.text = project.name
         dateLabel.text = project.dueDate?.formatDate()
+        
+        switch project.priority {
+        case "low":
+            priorityView.backgroundColor = FlatYellowDark()
+        case "medium":
+            priorityView.backgroundColor = FlatOrangeDark()
+        case "high":
+            priorityView.backgroundColor = FlatRedDark()
+        default:
+            break
+        }
     }
 
 }

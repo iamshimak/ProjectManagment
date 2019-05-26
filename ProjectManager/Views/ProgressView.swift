@@ -8,10 +8,11 @@
 
 import UIKit
 
-@IBDesignable class DayCounterView: UIView {
+@IBDesignable class ProgressView: UIView {
     
     @IBInspectable var backgroundLineColour: UIColor = UIColor.lightGray
     @IBInspectable var foregroundLineColour: UIColor = UIColor.red
+    @IBInspectable var lineCap: CAShapeLayerLineCap = .round
     
     
     @IBInspectable var lineWidth:CGFloat = 10 {
@@ -97,7 +98,7 @@ import UIKit
         
         let path = UIBezierPath(arcCenter: pathCenter, radius: self.radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         
-        foregroundLayer.lineCap = CAShapeLayerLineCap.round
+        foregroundLayer.lineCap = lineCap
         foregroundLayer.path = path.cgPath
         foregroundLayer.lineWidth = lineWidth
         foregroundLayer.fillColor = UIColor.clear.cgColor

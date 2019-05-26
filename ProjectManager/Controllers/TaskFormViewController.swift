@@ -13,12 +13,14 @@ class TaskFormViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var taskErroLabel: UILabel!
     @IBOutlet weak var dateErroLabel: UILabel!
+    @IBOutlet weak var endDateErroLabel: UILabel!
     
     var dataController: DataController!
     var editTask: Task?
@@ -26,17 +28,21 @@ class TaskFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        taskErroLabel.isHidden = true
-        dateErroLabel.isHidden = true
-        
-        dueDatePicker.minimumDate = Date().addDays(daysToAdd: 1)
-        dueDatePicker.maximumDate = project.dueDate!
         setupForm()
     }
     
     func setupForm() {
+        taskErroLabel.isHidden = true
+        dateErroLabel.isHidden = true
+        endDateErroLabel.isHidden = true
+        
+        startDatePicker.minimumDate = Date()
+        startDatePicker.maximumDate = project.dueDate!
+        startDatePicker.addTarget(self, action: #selector(startDateDidEnd(_:)), for: .valueChanged)
+        
+        dueDatePicker.minimumDate = Date().addDays(daysToAdd: 1)
+        dueDatePicker.maximumDate = project.dueDate!
+        
         guard let task = editTask else {
             return
         }
@@ -61,6 +67,7 @@ class TaskFormViewController: UIViewController {
             
             task.name = taskTextField.text
             task.notes = notesTextField.text
+            task.startDate = startDatePicker.date
             task.dueDate = dueDatePicker.date
             task.taskReminder = notificationSwitch.isOn
             task.project = project
@@ -83,5 +90,13 @@ class TaskFormViewController: UIViewController {
         let dateValidation = dueDatePicker.date.isGreaterThanDate(Date())
         return textValidation && dateValidation
     }
+    
+    @objc func startDateDidEnd(_ sender: UIDatePicker) {
+        dueDatePicker.minimumDate = sender.date.addDays(daysToAdd: 1)
+    }
+    
 
+    func endDateDidEnd(_ sender: UIDatePicker) {
+        
+    }
 }

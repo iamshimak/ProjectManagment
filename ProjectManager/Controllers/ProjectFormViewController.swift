@@ -96,11 +96,11 @@ class ProjectFormViewController: UIViewController {
     func setPriority(_ value: String) {
         switch value {
         case "low":
-            prioritySegment.setEnabled(true, forSegmentAt: 0)
+            prioritySegment.selectedSegmentIndex = 0
         case "medium":
-            prioritySegment.setEnabled(true, forSegmentAt: 1)
+            prioritySegment.selectedSegmentIndex = 1
         case "high":
-            prioritySegment.setEnabled(true, forSegmentAt: 2)
+            prioritySegment.selectedSegmentIndex = 2
         default:
             break
         }

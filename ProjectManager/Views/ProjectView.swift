@@ -17,12 +17,16 @@ class ProjectView: UIView {
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     
-    @IBOutlet weak var progressView: DayCounterView!
-    @IBOutlet weak var taskLeftView: DayCounterView!
-    @IBOutlet weak var daysTilDueView: DayCounterView!
+    @IBOutlet weak var progressView: ProgressView!
+    @IBOutlet weak var taskLeftView: ProgressView!
+    @IBOutlet weak var daysTilDueView: ProgressView!
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        progressView.lineCap = .butt
+        taskLeftView.lineCap = .butt
+        daysTilDueView.lineCap = .butt
+        
         progressView.layoutSubviews()
         taskLeftView.layoutSubviews()
         daysTilDueView.layoutSubviews()

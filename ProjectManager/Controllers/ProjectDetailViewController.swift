@@ -114,6 +114,14 @@ class ProjectDetailViewController: UIViewController {
     
     // MARK: - Navigation
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        guard project != nil else {
+            return false
+        }
+        
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? TaskFormViewController {
             slideInTransitioningDelegate.direction = .right

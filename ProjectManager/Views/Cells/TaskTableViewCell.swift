@@ -10,7 +10,7 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell, Cell {
 
-    @IBOutlet weak var progressView: DayCounterView!
+    @IBOutlet weak var progressView: ProgressView!
     @IBOutlet weak var taskName: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var startDate: UILabel!
@@ -37,8 +37,14 @@ class TaskTableViewCell: UITableViewCell, Cell {
         progressLevelTextField.text = "\(task.progressLevel)"
 
         let days = task.dueDate!.days(sinceDate: task.startDate!)!
-        let leftDays = task.dueDate!.days(sinceDate: Date())!
+        var leftDays = 0
         var average = 0.0
+        if task.startDate!.isGreaterThanDate(Date()) {
+            leftDays = task.dueDate!.days(sinceDate: task.startDate!)!
+        } else {
+            leftDays = task.dueDate!.days(sinceDate: Date())!
+        }
+        
         if days > 0 && leftDays > 0 {
             average = Double(leftDays) / Double(days) * 100.0
         }

@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        Chameleon.setGlobalThemeUsingPrimaryColor(FlatGray(), withSecondaryColor: FlatWhite(), andContentStyle: .contrast)
+        Chameleon.setGlobalThemeUsingPrimaryColor(FlatBlue(), withSecondaryColor: FlatBlueDark(), andContentStyle: .dark)
         IQKeyboardManager.shared.enable = true
         return true
     }
