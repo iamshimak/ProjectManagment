@@ -52,7 +52,7 @@ class ProjectViewModel {
         let days = project.dueDate!.days(sinceDate: project.createdDate!)!
         let leftDays = project.dueDate!.days(sinceDate: Date())!
         let average = Double(leftDays) / Double(days) * 100.0
-        return CGFloat(average)
+        return CGFloat(average.isNaN ? 0 : average)
     }
     
     func configure(_ view: ProjectView, project: Project?, tasks: [Task]?) {
@@ -64,9 +64,9 @@ class ProjectViewModel {
         view.isHidden = false
         view.nameLabel.text = project.name
         view.notesLabel.text = project.notes
-        view.priorityLabel.text = "Priority - \(project.priority!)"
-        view.startDateLabel.text = "Start Date - \(project.createdDate!.formatDate())"
-        view.endDateLabel.text = "End Date - \(project.dueDate!.formatDate())"
+        view.priorityLabel.text = "\(project.priority!)"
+        view.startDateLabel.text = "\(project.createdDate!.formatDate())"
+        view.endDateLabel.text = "\(project.dueDate!.formatDate())"
         
         let days = project.dueDate!.days(sinceDate: Date())!
         view.daysLabel.text = "\(days > 0 ? days : 0)"

@@ -18,6 +18,8 @@ class ProjectFormViewController: UIViewController {
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var nameErrorLabel: UILabel!
     
     var dataController: DataController!
@@ -28,6 +30,10 @@ class ProjectFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupForm()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
     }
     
     func setupForm() {

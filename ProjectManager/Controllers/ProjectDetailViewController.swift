@@ -31,14 +31,6 @@ class ProjectDetailViewController: UIViewController {
     
     func refreshUI() {
         loadViewIfNeeded()
-        
-        if project != nil {
-            setupFetchedResultsController()
-            let tasks = fetchedResultsController.fetchedObjects
-            projectViewModel.configure(projectView, project: project, tasks: tasks)
-        } else {
-            projectViewModel.configure(projectView, project: nil, tasks: nil)
-        }
     }
     
     /// A date formatter for date text in note cells
@@ -58,7 +50,7 @@ class ProjectDetailViewController: UIViewController {
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                               managedObjectContext: dataController.viewContext,
                                                               sectionNameKeyPath: nil,
-                                                              cacheName: "\(String(describing: project))-tasks")
+                                                              cacheName: "\(String(describing: project.objectID))-tasks")
         fetchedResultsController.delegate = self
         
         do {
@@ -71,6 +63,8 @@ class ProjectDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyboardHide()
+        
+        projectViewModel.configure(projectView, project: nil, tasks: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -125,7 +119,7 @@ class ProjectDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? TaskFormViewController {
             slideInTransitioningDelegate.direction = .right
-            slideInTransitioningDelegate.disableCompactHeight = false
+            // slideInTransitioningDelegate.disableCompactHeight = false
             
             controller.dataController = dataController
             controller.transitioningDelegate = slideInTransitioningDelegate
@@ -188,6 +182,31 @@ extension ProjectDetailViewController: UITableViewDelegate {
 extension ProjectDetailViewController: ProjectSelectionDelegate {
     func projectSelected(_ newProject: Project?) {
         project = newProject
+        setupFetchedResultsController()
+        let tasks = fetchedResultsController.fetchedObjects
+        projectViewModel.configure(projectView, project: project, tasks: tasks)
+        tableView.reloadData()
+    }
+    
+    func projectDeleted() {
+        if tableView != nil {
+            projectViewModel.configure(projectView, project: nil, tasks: nil)
+            tableView.reloadData()
+        }
+    }
+    
+    func projectUpdated(_ newProject: Project?) {
+        project = newProject
+        setupFetchedResultsController()
+        let tasks = fetchedResultsController.fetchedObjects
+        projectViewModel.configure(projectView, project: project, tasks: tasks)
+    }
+    
+    func projectInserted(_ newProject: Project?) {
+        project = newProject
+        setupFetchedResultsController()
+        let tasks = fetchedResultsController.fetchedObjects
+        projectViewModel.configure(projectView, project: project, tasks: tasks)
     }
 }
 
@@ -204,7 +223,8 @@ extension ProjectDetailViewController: NSFetchedResultsControllerDelegate {
             break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
-        break
+            tableView.reloadData()
+            break
         case .update:
             let tasks = fetchedResultsController.fetchedObjects
             projectViewModel.configure(projectView, project: project, tasks: tasks)

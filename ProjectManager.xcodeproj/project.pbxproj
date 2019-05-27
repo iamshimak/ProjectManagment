@@ -57,7 +57,7 @@
 		1496D6EA228CDE0400F45338 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
 		14C00CF922933E00007077DC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		14C00CFB2293555D007077DC /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		3F60049F228C0559007DFB8E /* ProjectManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F60049F228C0559007DFB8E /* Goose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6004A2228C055A007DFB8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6004A4228C055A007DFB8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3F6004A7228C055A007DFB8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		3F6004A0228C0559007DFB8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F60049F228C0559007DFB8E /* ProjectManager.app */,
+				3F60049F228C0559007DFB8E /* Goose.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			);
 			name = ProjectManager;
 			productName = ProjectManager;
-			productReference = 3F60049F228C0559007DFB8E /* ProjectManager.app */;
+			productReference = 3F60049F228C0559007DFB8E /* Goose.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -510,7 +510,7 @@
 				INFOPLIST_FILE = ProjectManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.ProjectManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Goose;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -525,7 +525,7 @@
 				INFOPLIST_FILE = ProjectManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sk.ProjectManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Goose;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

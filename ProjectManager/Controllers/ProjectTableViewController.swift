@@ -12,6 +12,9 @@ import EventKit
 import EventKitUI
 
 protocol ProjectSelectionDelegate: class {
+    func projectInserted(_ newProject: Project?)
+    func projectDeleted()
+    func projectUpdated(_ newProject: Project?)
     func projectSelected(_ newProject: Project?)
 }
 
@@ -51,7 +54,7 @@ class ProjectTableViewController: UITableViewController {
             let indexPath = IndexPath(row: 0, section: 0)
             self.tableView(tableView, didSelectRowAt: indexPath)
         } else {
-            delegate?.projectSelected(nil)
+            delegate?.projectDeleted()
         }
     }
     
@@ -152,16 +155,16 @@ extension ProjectTableViewController: NSFetchedResultsControllerDelegate {
             }
             
             let project = fetchedResultsController.object(at: aIndexPath)
-            delegate?.projectSelected(project)
+            delegate?.projectInserted(project)
             break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
-            delegate?.projectSelected(nil)
+            delegate?.projectDeleted()
             break
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .fade)
             let project = fetchedResultsController.object(at: indexPath!)
-            delegate?.projectSelected(project)
+            delegate?.projectUpdated(project)
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }

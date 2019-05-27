@@ -27,7 +27,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         let categoryIdentifire = "Delete Notification Type"
         content.sound = UNNotificationSound.default
         content.body = "This is example how to send " + notificationType
-        content.badge = 1
+        content.badge = 0
         content.categoryIdentifier = categoryIdentifire
         
         //Add attachment for Notification with more content

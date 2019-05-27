@@ -18,6 +18,8 @@ class TaskFormViewController: UIViewController {
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var taskErroLabel: UILabel!
     @IBOutlet weak var dateErroLabel: UILabel!
     @IBOutlet weak var endDateErroLabel: UILabel!
@@ -29,6 +31,10 @@ class TaskFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupForm()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
     }
     
     func setupForm() {

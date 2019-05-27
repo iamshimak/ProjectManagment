@@ -58,8 +58,7 @@ extension SlideInPresentationManager: UIAdaptivePresentationControllerDelegate {
     }
     
     func presentationController(_ controller: UIPresentationController,
-                                viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle)
-        -> UIViewController? {
+                                viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
             guard style == .overFullScreen else { return nil }
             
             return UIStoryboard(name: "Main", bundle: nil)

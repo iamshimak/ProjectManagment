@@ -31,8 +31,8 @@ class TaskTableViewCell: UITableViewCell, Cell {
         
         taskName.text = task.name
         notesLabel.text = task.notes
-        startDate.text = task.startDate?.formatDate()
-        endDate.text = task.dueDate?.formatDate()
+        startDate.text = "Start Date \(task.startDate!.formatDate())"
+        endDate.text = "End Date \(task.dueDate!.formatDate())"
         
         progressLevelTextField.text = "\(task.progressLevel)"
 
